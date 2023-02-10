@@ -2,7 +2,6 @@ package SieteyMedia
 
 import recursos.*
 import sieteymedia.SieteYMedia
-import java.util.*
 
 
     fun presentarJuego() {
@@ -28,10 +27,8 @@ import java.util.*
             i++
         }
     }
-
     fun GameControler() {
         val xogo = SieteYMedia()
-        val sc = Scanner(System.`in`)
         //-------------------------------------------------------------
         var opc = 'C'
         println("Como mínimo recibes una carta, luego puedes decidir si seguir o plantarte")
@@ -42,9 +39,10 @@ import java.util.*
             System.out.println("\n\tValor de cartas: " + xogo.valorCartas(xogo.cartasJugador))
             if (xogo.valorCartas(xogo.cartasJugador) < 7.5) {
                 println("\n¿Pides [C]arta o te [P]lantas?")
-                opc = sc.next().trim { it <= ' ' }.uppercase(Locale.getDefault())[0]
+                opc = readLine()?.trim()?.get(0)?.uppercaseChar() ?: 'C'
             }
         }
+
         //-----------------------------------------------------------------
         if (xogo.valorCartas(xogo.cartasJugador) > 7.5) {
             println("Jugador, te has pasado en tu jugada anterior, gana la banca")
@@ -62,7 +60,7 @@ import java.util.*
         }
         //------------------------------------------------------------------
     }
-        fun main(args: Array<String>) {
+        fun main() {
             presentarJuego()
             GameControler()
             println("Adios")
