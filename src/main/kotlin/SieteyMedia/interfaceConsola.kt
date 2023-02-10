@@ -4,11 +4,6 @@ import recursos.*
 import sieteymedia.SieteYMedia
 import java.util.*
 
-class InterfaceConsola {
-    init {
-        presentarJuego()
-        GameControler()
-    }
 
     fun presentarJuego() {
         println("- El usuario es el jugador y el ordenador la banca.")
@@ -58,12 +53,7 @@ class InterfaceConsola {
             println("Éstas son mis cartas:")
             xogo.turnoBanca()
             mostrarCartas(xogo.cartasBanca)
-            System.out.println(
-                """
-                    
-                    Valor de mis cartas(banca): ${xogo.valorCartas(xogo.cartasBanca)}
-                    """.trimIndent()
-            )
+            System.out.println("""Valor de mis cartas(banca): ${xogo.valorCartas(xogo.cartasBanca)}""".trimIndent())
             if (xogo.valorCartas(xogo.cartasBanca) > 7.5) {
                 println("Me pasé, ganas tú,jugador")
             } else {
@@ -72,12 +62,8 @@ class InterfaceConsola {
         }
         //------------------------------------------------------------------
     }
-
-    companion object {
-        @JvmStatic
         fun main(args: Array<String>) {
-            InterfaceConsola()
+            presentarJuego()
+            GameControler()
             println("Adios")
         }
-    }
-}
